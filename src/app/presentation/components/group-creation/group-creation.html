@@ -1,0 +1,26 @@
+
+
+
+<div class="panel">
+<div class="group-title" id="g-nuevo">
+    <div class="badge" aria-hidden="true">+</div>
+    Crear tu grupo
+</div>
+<p class="info">Introduce únicamente el nombre del grupo. Luego podrás añadir integrantes.</p>
+
+<mat-form-field class="group-text-field">
+    <mat-label>Nombre del grupo</mat-label>
+    <input matInput placeholder="Ruina" [formControl]="nameControl" (blur)="updateErrorMesage()" required/>
+    @if (nameControl.invalid || (error$ | async) ) {
+        <mat-error>{{errorMessage()}}</mat-error>
+    }
+    
+</mat-form-field>
+    <div>
+        <button type="submit" class="normal-button" (click)="onGroupCreationClick()">Crear grupo</button>
+    </div>
+
+    <div class="bottom-row">
+        <span class="info">El nombre será público para los miembros del grupo.</span>
+    </div>
+</div>

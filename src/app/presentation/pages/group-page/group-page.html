@@ -1,0 +1,68 @@
+<div class="group-container">
+
+
+    <header>
+      <div class="title">
+        <h1 id="mainTitle">{{groupName$ |async}} - Amigo invisible</h1>
+        <p>Mira a todos los participantes, comparte el enlace y gestiona el sorteo si eres admin.</p>
+      </div>
+    </header>
+    <div class="group-grid">
+        <section class="group-card users-card">
+            <h2 style="margin:0 0 6px 0;">Participantes</h2>
+            <p class="info">Lista de usuarios inscritos en el grupo.</p>
+
+            <div class="users-list">
+             <div class="user"tyle="opacity:0.7;">
+                    <div class="badge">{{getFirstChar(admin$ | async)}}</div>
+                    <div class="user-info">
+                        <div class="name">{{(admin$|async).username}}</div>
+                    </div>
+                    <div class="user-actions">
+                        <span class="chip">Admin</span>
+                    </div>  
+            </div>
+             
+                @for (member of (members$ | async); track member.id) {
+                    @if(!(member.id == (admin$ | async).id)){
+                    <div class="user"tyle="opacity:0.7;">
+                        <div class="badge">{{getFirstChar(member)}}</div>
+                        <div class="user-info">
+                            <div class="name">{{member.username}}</div>
+                        </div>
+                    </div>
+                    }
+                }
+        </div>
+        </section>
+
+
+        <!-- Right column: sidebar (invite + admin + secret santa) -->
+        <aside class="sidebar">
+            <div class="group-card">
+                <h3 style="margin:0 0 8px 0;">Invitar participantes</h3>
+                <label for="inviteLink">Enlace de invitación</label>
+                <div class="link-row">
+                    <input type="text" readonly [value]="(linkAdd$ | async)" />
+                    
+                </div>
+
+                <button class="normal-button" title="Copiar link" (click)="copyToClipboard()">Copiar</button>
+                @if((admin$|async).id == getMyUserId() && (showing$|async)){
+                    <div class="admin-row" style="margin-top:12px;">
+                        <button class="admin-button" title="Generar asignaciones de amigo invisible" (click)="generateSecretSantas()" [disabled]="disabled$|async">{{buttonText$|async}}</button>
+                    </div>
+                }
+                
+            </div>
+        </aside>
+        @if(hasAssignations$ | async){
+            <div class="panel" style="grid-column: 1 / -1; height: 100px; min-height: 0px;display: flex;">
+                <button class="normal-button" style="margin-top: 0px !important;" (click)="openDialog()"> VER MIS ASIGNACION</button>
+            </div>
+        }
+       
+    </div>
+
+
+</div>

@@ -1,0 +1,38 @@
+<div class="register-component">
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <input formControlName="username" type="text" placeholder="Nombre de usuario" [class.input-error]="registerForm.get('username')?.invalid && registerForm.touched">
+        <input formControlName="password" type="password" placeholder="Contraseña" [class.input-error]="registerForm.get('password')?.invalid && registerForm.touched">
+        <input formControlName="repeatPassword" type="password" placeholder="Repite la contraseña" [class.input-error]="(registerForm.get('repeatPassword')?.invalid && registerForm.touched) || (registerForm.hasError('passwordsDontMatch') && registerForm.touched)">
+       
+        <div class="error-message">
+            @if (registerForm.invalid && registerForm.touched) {
+                @if (registerForm.get('username')?.hasError('required')) {
+                    <p>El nombre de usuario es obligatorio.</p>
+                }@else if (registerForm.get('username')?.hasError('minlength')) {
+                    <p>El nombre de usuario no tiene suficientes caracteres.</p>
+                }@else if (registerForm.get('password')?.hasError('required')) {
+                    <p>La contraseña es obligatoria.</p>
+                }@else if (registerForm.get('password')?.hasError('minlength')) {
+                    <p>La contraseña no tiene suficientes caracteres.</p>
+                }@else if (registerForm.get('repeatPassword')?.hasError('required')) {
+                    <p>Repetir la contraseña es obligatorio.</p>
+                }@else if (registerForm.hasError('passwordsDontMatch')) {
+                    <p>Las contraseñas no coinciden.</p>
+                }
+                @if (error$ | async; as error) {
+            
+                {{ error }}
+                }
+            }
+        </div>
+         
+    
+    
+        <button class="normal-button" type="submit">☃️ Entrar al invierno</button>
+    </form>
+    
+   
+    <div class="extra">
+        <button class="link-button" (click)="onSwitchToLogin()">¿Ya tienes cuenta?</button>
+    </div>
+</div>

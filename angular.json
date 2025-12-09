@@ -31,6 +31,9 @@
             ],
             "styles": [
               "src/styles.scss"
+            ],
+             "scripts": [
+              "public/js/snowAnimation.js"
             ]
           },
           "configurations": {
@@ -64,7 +67,12 @@
               "buildTarget": "secret-santa-app:build:production"
             },
             "development": {
-              "buildTarget": "secret-santa-app:build:development"
+              "buildTarget": "secret-santa-app:build:development",
+              "ssl": true,
+              "sslKey": "ssl/server.key",
+              "sslCert": "ssl/server.crt",
+              "proxyConfig": "src/proxy.conf.json",
+              "port": 4200
             }
           },
           "defaultConfiguration": "development"
@@ -94,5 +102,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

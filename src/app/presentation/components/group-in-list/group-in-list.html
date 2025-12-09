@@ -1,0 +1,19 @@
+<article class="card" (click)="onGroupClick()">
+    <div>
+        <div class="group-title" >
+            <div class="badge">{{getFirstLetter()}}</div>
+            {{groupName$ | async}}
+        </div>
+        <div class="members">
+            <div class="member">{{(admin$| async).username}} 
+               
+                    <small>admin</small>
+            </div>
+            @for(member of (members$ | async); track member.id){
+                @if(!(member.id == (admin$ |async).id)){
+                    <div class="member">{{member.username}} </div>
+                }  
+            }
+        </div>
+    </div>
+</article>

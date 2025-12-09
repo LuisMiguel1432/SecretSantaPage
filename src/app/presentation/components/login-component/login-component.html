@@ -1,0 +1,32 @@
+<div class="login-component">
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <input formControlName="username" type="text" placeholder="Nombre de usuario" [class.input-error]="loginForm.get('username')?.invalid && loginForm.touched">
+        <input formControlName="password" type="password" placeholder="Contraseña" [class.input-error]="loginForm.get('password')?.invalid && loginForm.touched">
+       
+        <div class="error-message">
+            @if (loginForm.invalid && loginForm.touched) {
+                @if (loginForm.get('username')?.hasError('required')) {
+                    <p>El nombre de usuario es obligatorio.</p>
+                }@else if (loginForm.get('username')?.hasError('minlength')) {
+                    <p>El usuario no tiene suficientes caracteres.</p>
+                }@else if (loginForm.get('password')?.hasError('required')) {
+                    <p>La contraseña es obligatoria.</p>
+                }@else if (loginForm.get('password')?.hasError('minlength')) {
+                    <p>La contraseña no tiene suficientes caracteres.</p>
+                }
+            }@else if (error$ | async; as error) {
+            <div class="error-message">
+                {{ error }}
+            </div>
+            }
+        </div>
+         
+        
+        <button class="normal-button" type="submit">☃️ Entrar al invierno</button>
+    </form>
+
+<div class="extra">
+<button class="link-button" (click)="onSwitchToRegister()">¿No tienes cuenta?</button>
+</div>
+</div>
+

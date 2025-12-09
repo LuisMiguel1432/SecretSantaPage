@@ -1,0 +1,14 @@
+<div class="login-page">
+  <mat-card class="login-card">
+    <h1>❄️ Amigo Invisible</h1>
+    <p>El invierno ha elegido tu próximo regalo</p>
+    @if (showLogin) {
+    <app-login-component (switchToRegister)="OnSwitch()" (finished)="OnFinished()"></app-login-component>
+    }
+    @else {
+    <app-register-component (switchToLogin)="OnSwitch()" (finished)="OnFinished()"></app-register-component>
+    }
+  </mat-card> 
+</div>
+
+

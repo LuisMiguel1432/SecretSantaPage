@@ -1,0 +1,170 @@
+.group-container{
+    height: 100%; 
+    overflow: hidden;
+    padding:32px;
+}
+header .title{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+}
+header h1{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-0.01em;
+}
+
+.group-card {
+    border-radius: 12px;
+    padding:18px;
+    background: var(--bg-2);
+    border:1px solid var(--glass-border);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.6);
+    min-height: 200px;
+    box-sizing: border-box;
+    width: 100%;
+    
+}
+.users-card{
+    height: 100%;
+}
+
+
+
+.group-grid{
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    align-items: start;
+    margin-top: 100px;
+    gap: 30px;
+}
+@media (max-width:800px) {
+    .group-grid{
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        padding-bottom: 40px;
+    }
+    .panel{
+        width: 100%;
+    }
+    .group-container{
+        overflow: scroll;
+    }
+    .users-card{
+        height: 300px;
+    }
+    .users-list{
+          max-height: 70%;
+    }
+}
+
+.users-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:12px;
+    overflow-y:scroll;
+    padding-right:6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.user {
+    display:flex;
+    gap:12px;
+    align-items:center;
+    padding:10px;
+    border-radius:12px;
+}
+.user:hover { background: rgba(127,182,255,0.02); }
+
+.avatar{
+    width:46px;
+    height:46px;
+    border-radius:10px;
+    display:grid;
+    place-items:center;
+    background: linear-gradient(180deg, rgba(127,182,255,0.14), rgba(255,255,255,0.02));
+    border:1px solid rgba(127,182,255,0.12);
+    color:#04102a;
+    font-weight:800;
+}
+
+.user-info {
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    min-width:0;
+}
+.user-info .name { font-weight:700; color:#eaf6ff; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.user-info .meta { font-size:13px; color:var(--muted); }
+
+.user-actions {
+    margin-left:auto;
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+.chip {
+    padding:6px 8px;
+    border-radius:999px;
+    font-size:12px;
+    background: rgba(255,255,255,0.03);
+    color:var(--muted);
+    border:1px solid rgba(255,255,255,0.02);
+}
+.sidebar {
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    align-self:start;
+    width: 100%;
+}
+
+.invite label { display:block; font-weight:700; color:#cfe5ff; margin-bottom:8px; font-size:13px; }
+.link-row { display:flex; gap:8px; align-items:center; }
+
+input{
+    flex:1;
+    padding:10px 12px;
+    border-radius:10px;
+    border:solid 1px var(--glass-border);
+    background: rgba(255,255,255,0.02);
+    color:#eaf6ff;
+    font-size:14px;
+    outline:none;
+}
+.invite .note { margin-top:8px; font-size:12px; color:var(--muted); }
+
+/* admin area (botón generar visible para admins) */
+.admin-row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin-top:12px;
+}
+
+
+.admin-button{
+    width: 100%;
+    border-radius: 12px;
+    padding: 12px;
+    background-color: rgb(17, 185, 214);
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.admin-button:active{ transform: translateY(1px) }
+
+.admin-button:hover {
+  background: var(--error-color);
+}
+
+.info{
+    margin: 14px,0px;
+    font-size: 13px;
+    color: var(--muted);
+}

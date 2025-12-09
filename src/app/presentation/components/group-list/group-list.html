@@ -1,0 +1,29 @@
+ <div class="actions" aria-hidden="false">
+    <button (click)="openDialog()" class="btn" aria-label="Crear grupo">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Crear grupo
+</button>
+</div>
+ 
+
+<section class="grid" aria-label="Lista de grupos">
+        @if(groups$ | async; as groups){
+            @for (groupItem of groups; track groupItem.id) {
+                <app-group-in-list [group]="groupItem"></app-group-in-list>
+            }
+        }@else {
+            <article class="card" (click)="openDialog()">
+                <div>
+                    <div class="group-title" id="g-nuevo">
+                        <div class="badge" aria-hidden="true">+</div>
+                        Crear tu grupo
+                    </div>
+                    <p style="margin-top:12px;color:var(--muted);font-size:14px;">
+                        Pulsa <strong>Crear grupo</strong> para añadir un nuevo grupo. (Aquí puedes añadir tu formulario/modal)
+                    </p>
+                </div>
+            </article>
+        }
+    </section>
