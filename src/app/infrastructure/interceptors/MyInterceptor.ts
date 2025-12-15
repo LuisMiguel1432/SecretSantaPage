@@ -8,7 +8,7 @@ export const myInterceptor: HttpInterceptorFn = (req, next) => {
   const authInfrastructureService = inject(AuthInfraestructureService);
   const router = inject(Router);
 
-  if (req.url.endsWith('/login') || req.url.endsWith('/register') || req.url.endsWith('/refresh')) {
+  if (req.url.endsWith('/login') || req.url.endsWith('/register') || req.url.endsWith('/refresh') || req.url.endsWith('/logout')) {
     return next(req);
   }
 

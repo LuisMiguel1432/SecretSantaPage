@@ -47,7 +47,7 @@ export class GroupPage {
       next:(res)=>{
         this._hasAssignations.next(res);
         this._disabled.next(res);
-        this._buttonText.next("¡Asignaciones Generadas!"); 
+        this._buttonText.next(res ? "¡Asignaciones Generadas!" : "Generar asignaciones"); 
       },
       error:()=>{
         this._hasAssignations.next(false);
